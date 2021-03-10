@@ -82,7 +82,7 @@ It’s easy to see that a major change in a mature high visibility service that 
 The trickier situations lie in between these extremes, and the aim of this document is to expose the heuristics by which we consider these questions.
 We also describe our extant processes around the update of Science Platform and Science Platform adjacent services, as these are likely to be of most interest to developers outside our team and since they exercise a lot of the decision space described above.
 
-Kubernetes Services and ArgoCD
+Kubernetes services and Argo CD
 ------------------------------
 
 SQuaRE develops Kubernetes-based services, and uses the ArgoCD platform to manage their deployment. The ArgoCD UI provides a valuable way both to assess the state of deployed services and to allow basic maintenance operations on deployed services even without being particularly intimate with the details of their deployments, and irrespective whether the underlying service is configured with Helm or kustomize.
