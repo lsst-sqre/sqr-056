@@ -69,9 +69,13 @@ The barrier to getting through that gate is itself a function of where a system 
 Where any one particular instance of any one particular service lies in the Axis of Formality is a function of:
 
 -  The service’s maturity, including the number of users depending on the service
+   
 -  The service environment, including whether it’s production, staging or development environment
+   
 -  The service’s userbase, including whether it is a feature-seeking or risk averse population
+   
 -  The actual and reputational impact of disruptions to the service
+   
 -  The nature of the change being made.
 
 It’s easy to see that a major change in a mature high visibility service that many users depend on is on the opposite side of the axis that a cosmetic change in a service under development deployed on a sandbox.
@@ -83,7 +87,7 @@ Kubernetes Services and ArgoCD
 
 SQuaRE develops Kubernetes-based services, and uses the ArgoCD platform to manage their deployment. The ArgoCD UI provides a valuable way both to assess the state of deployed services and to allow basic maintenance operations on deployed services even without being particularly intimate with the details of their deployments, and irrespective whether the underlying service is configured with Helm or kustomize.
 
-.. image:: static/argocd.png
+.. image:: _static/argocd.png
 	   
 ArgoCD continuously monitors running services and compares their state with that of their git repo. When it detects that a service is “out of sync” (ie there is drift between its deployed state and the repository state) it can sync automatically (the continuous deployment model) or as in Figure 2, indicate visually the out-of-sync state until an engineer pushes the sync button to resolve it (the gated deployment model).
 Generally unless working in a dev or bleed environment, we do not allow ArgoCD to sync automatically.
