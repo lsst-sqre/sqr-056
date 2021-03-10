@@ -100,7 +100,18 @@ It follows then that for gated deployments there are two aspects to getting a ne
 Mechanics
 ---------
 
-[gafalefawr example]
+Assume that there is a new release of Gafaelfawr, the authentication service used by the Rubin Science Platform.
+The following steps notify Argo CD that this upgrade is ready to be performed:
+
+#. Update the Helm chart in the [charts](https://github.com/lsst-sqre/charts) repository under `charts/gafaelfawr`.
+   Do this by updating the `appVersion` key in `Chart.yaml` and the `image.tag` key in `values.yaml` to point to the new release.
+   Also update the version of the Helm chart in `Chart.yaml`.
+   When this PR is merged, a new version of the chart will be automatically published via GitHub Actions.
+#. Update the Argo CD configuration to deploy the new version of the chart.
+   The `Chart.yaml` file in `services/gafaelfawr` in the [phalanx](https://github.com/lsst-sqre/phalanx) repository determines what version of the Gafaelfawr chart is installed by Argo CD.
+   (Phalanx is the Argo CD configuration repository for the Rubin Science Platform.)
+   Under the stanza for the `gafaelfawr` chart in the `dependencies` key, change the version to match the newly-released chart version.
+   Once this PR is merged, Argo CD will notice there is a pending upgrade for Gafaelfawr.
 
 Process
 -------
