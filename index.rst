@@ -79,7 +79,7 @@ Where any one particular instance of any one particular service lies in the Axis
 -  The nature of the change being made.
 
 It’s easy to see that a major change in a mature high visibility service that many users depend on is on the opposite side of the axis that a cosmetic change in a service under development deployed on a sandbox.
-The thickier situations lie in between these extremes, and the aim of this document is to expose the heuristics by which we consider these questions.
+The trickier situations lie in between these extremes, and the aim of this document is to expose the heuristics by which we consider these questions.
 We also describe our extant processes around the update of Science Platform and Science Platform adjacent services, as these are likely to be of most interest to developers outside our team and since they exercise a lot of the decision space described above.
 
 Kubernetes Services and ArgoCD
@@ -194,4 +194,3 @@ Discussion for the science RSP production era:
 
 .. .. bibliography:: local.bib lsstbib/books.bib lsstbib/lsst.bib lsstbib/lsst-dm.bib lsstbib/refs.bib lsstbib/refs_ads.bib
 ..    :style: lsst_aa
-
