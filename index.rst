@@ -58,6 +58,10 @@
    
    This is a *descriptive* (not prescriptive) document describing details of current practice of a specific team in a specific area. For the actual developer guide, see developer.lsst.io
 
+
+Background
+==========
+   
 SQuaRE uses Configuration as Code (aka “gitops”) practices for service deployment whenever practical.
 What this means is that by merging code or configuration to a special branch (typically master), it is *possible* to trigger an action (via an agent or supervisory system) that automatically results in the deployment of the new version of the service.
 
@@ -68,22 +72,22 @@ The barrier to getting through that gate is itself a function of where a system 
 
 Where any one particular instance of any one particular service lies in the Axis of Formality is a function of:
 
--  The service’s maturity, including the number of users depending on the service
-   
--  The service environment, including whether it’s production, staging or development environment
-   
--  The service’s userbase, including whether it is a feature-seeking or risk averse population
-   
--  The actual and reputational impact of disruptions to the service
-   
--  The nature of the change being made.
+- The service’s maturity, including the number of users depending on the service
+
+- The service environment, including whether it’s production, staging or development environment
+
+- The service’s userbase, including whether it is a feature-seeking or risk averse population
+
+- The actual and reputational impact of disruptions to the service
+
+- The nature of the change being made.
 
 It’s easy to see that a major change in a mature high visibility service that many users depend on is on the opposite side of the axis that a cosmetic change in a service under development deployed on a sandbox.
 The trickier situations lie in between these extremes, and the aim of this document is to expose the heuristics by which we consider these questions.
 We also describe our extant processes around the update of Science Platform and Science Platform adjacent services, as these are likely to be of most interest to developers outside our team and since they exercise a lot of the decision space described above.
 
 Kubernetes services and Argo CD
-------------------------------
+===============================
 
 SQuaRE develops Kubernetes-based services, and uses the ArgoCD platform to manage their deployment. The ArgoCD UI provides a valuable way both to assess the state of deployed services and to allow basic maintenance operations on deployed services even without being particularly intimate with the details of their deployments, and irrespective whether the underlying service is configured with Helm or kustomize.
 
@@ -98,7 +102,7 @@ It follows then that for gated deployments there are two aspects to getting a ne
 2. Process: Going through the process that allows it to be synced into production.
 
 Mechanics
----------
+=========
 
 Assume that there is a new release of Gafaelfawr, the authentication service used by the Rubin Science Platform.
 The following steps notify Argo CD that this upgrade is ready to be performed:
@@ -114,7 +118,7 @@ The following steps notify Argo CD that this upgrade is ready to be performed:
    Once this PR is merged, Argo CD will notice there is a pending upgrade for Gafaelfawr.
 
 Process
--------
+=======
 
 The process used to deploy a specific instance of a service depends on where it lies on the axis of formality above. We use the following terminology for the various deployment environments, in decreasing formality:
 
@@ -135,6 +139,7 @@ A co-ordinator is assigned to announce work start and work end and field any que
 Current fixed maintenance windows (for applicable services/deployments) are:
 
 -  All telescope deployments: 1st Wednesday of every month, late afternoon in Chile (approx 2pm PT), confirmed with the telescope software configuration manager.
+
 -  Any other deployment subject to maintenance window: Weekly, Thursday afternoons (approx 3pm PT).
 
 Again, these are not scheduled downtimes. In the event that extended service downtime is needed in a production service (extremely rare), work would be scheduled out of normal hours with ample notice and co-ordination with stakeholders.
@@ -142,60 +147,12 @@ Again, these are not scheduled downtimes. In the event that extended service dow
 Here is a chart showing the current settled-upon practice in select areas:
 
 
-+--------------+---+--------+-----------+------------------------------+
-| Service      | B | Dev    | Int       | Prod                         |
-|  Instance    | l |        |           |                              |
-|              | e |        |           |                              |
-|              | e |        |           |                              |
-|              | d |        |           |                              |
-+==============+===+========+===========+==============================+
-| Science      | A | Develo | #rsp-team | Release manager has to okay  |
-| Platform -   | u | per-at | channel   | on #rsp-team, 24 hour notice |
-| Science      | t | -will, | anno      | minimum                      |
-| Deployments  | o | no     | uncement, |                              |
-| (IDF, LDF,   | m | he     | courtesy  |                              |
-| USDF)        | a | ads-up | 1hr       |                              |
-|              | t | re     | notice    |                              |
-|              | i | quired |           |                              |
-|              | c |        |           |                              |
-+--------------+---+--------+-----------+------------------------------+
-| Science      | N | Develo | #c        | #com-square notice,          |
-| Platform -   | / | per-at | om-square | #                            |
-| Telescope    | A | -will, | notice,   | summit-testing-announcements |
-| Deploym      |   | no     | in        | notice, in maintenance       |
-| ents(summit, |   | he     | ma        | window                       |
-| base, NTS)   |   | ads-up | intenance |                              |
-|              |   | re     | window    |                              |
-|              |   | quired |           |                              |
-+--------------+---+--------+-----------+------------------------------+
-| EFD          | N | Develo | #c        | #com-square notice,          |
-|              | / | per-at | om-square | #                            |
-|              | A | -will, | notice,   | summit-testing-announcements |
-|              |   | no     | in        | notice, in maintenance       |
-|              |   | he     | ma        | window                       |
-|              |   | ads-up | intenance |                              |
-|              |   | re     | window    |                              |
-|              |   | quired |           |                              |
-+--------------+---+--------+-----------+------------------------------+
-| Roundtable   | N | Develo | Developer | If service disruption is     |
-| (L           | / | per-at | -at-will, | expected, in maintenance     |
-| SST-the-docs | A | -will, | no        | window, notice in relevant   |
-| and other    |   | no     | heads-up  | service channels (dm-docs,   |
-| non-data     |   | he     | required  | etc). Otherwise at-will.     |
-| services),   |   | ads-up |           |                              |
-| SQuaSH       |   | re     |           |                              |
-|              |   | quired |           |                              |
-+--------------+---+--------+-----------+------------------------------+
-| commun       | N | N/A    | N/A       | If service disruption is     |
-| ity.lsst.org | / |        |           | expected, out-of-hours in    |
-|              | A |        |           | co-ordination with           |
-|              |   |        |           | #rubinobs-forum-team.        |
-|              |   |        |           | Otherwise in maintenance     |
-|              |   |        |           | window.                      |
-+--------------+---+--------+-----------+------------------------------+
+.. raw:: html
+   :file: table1.html
+
 
 Discussion for the science RSP production era:
-----------------------------------------------
+==============================================
 
 
   
