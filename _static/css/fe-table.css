@@ -1,0 +1,47 @@
+table.fe-table {
+    border: 1px solid #FFFFFF;
+    /* width: 350px; */
+    /* height: 200px; */
+    text-align: center;
+    border-collapse: collapse;
+}
+table.fe-table td, table.fe-table th {
+    border: 1px solid #cccccc;
+    padding: 3px 5px;
+    text-align: left;
+}
+table.fe-table tbody td {
+    font-size: 13px;
+}
+td:nth-child(1) {
+    background: #0B6FA4;
+    color: #FFFFFF;
+    font-size: 17px;
+    text-align: center;    
+}
+table.fe-table tr:nth-child(even) {
+    background: #D0E4F5;
+}
+table.fe-table thead {
+    background: #0B6FA4;
+    border-bottom: 5px solid #FFFFFF;
+}
+table.fe-table thead th {
+    font-size: 17px;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: center;
+    border-left: 2px solid #FFFFFF;
+}
+table.fe-table thead th:first-child {
+    border-left: none;
+}
+
+table.fe-table code {
+    background: none;
+    padding: 0px;
+}
+
+table.fe-table tfoot td {
+    font-size: 14px;
+}

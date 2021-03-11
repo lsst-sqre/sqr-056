@@ -20,3 +20,7 @@ g.update(confs)
 # Example:
 #
 #     intersphinx_mapping['python'] = ('https://docs.python.org/3', None)
+
+html_css_files = [
+    'css/fe-table.css',
+]
