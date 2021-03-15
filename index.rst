@@ -46,8 +46,6 @@
 
 .. note::
 
-   **This technote is not yet published.**
-
    The aim of this document is to expose the heuristics by which we consider what the appropriate process is for various types of service updates.
    We also describe our extant processes around Science Platform and Science Platform adjacent services, as these are likely to be of most interest to developers outside our team. 
 
@@ -68,7 +66,10 @@ What this means is that by merging code or configuration to a special branch (ty
 Whether the new version of the service is *actually* deployed automatically (a practice known as continuous deployment) or whose deployment is gated behind a human decision making process is a matter of policy.
 The barrier to getting through that gate is itself a function of where a system lies on an axis of formality, with one end maximizing developer agency and the other maximizing organisational control.
 
-.. image:: _static/axis.png
+.. figure:: _static/axis.png
+   :name: fig-axis
+
+   Some common examples along the axis of formality
 
 Where any one particular instance of any one particular service lies in the Axis of Formality is a function of:
 
@@ -91,7 +92,10 @@ Kubernetes services and Argo CD
 
 SQuaRE develops Kubernetes-based services, and uses the ArgoCD platform to manage their deployment. The ArgoCD UI provides a valuable way both to assess the state of deployed services and to allow basic maintenance operations on deployed services even without being particularly intimate with the details of their deployments, and irrespective whether the underlying service is configured with Helm or kustomize.
 
-.. image:: _static/argocd.png
+.. figure:: _static/argocd.png
+   :name: fig-argocd
+
+   The overview panel of the ArgoCD UI
 	   
 ArgoCD continuously monitors running services and compares their state with that of their git repo. When it detects that a service is “out of sync” (ie there is drift between its deployed state and the repository state) it can sync automatically (the continuous deployment model) or as in Figure 2, indicate visually the out-of-sync state until an engineer pushes the sync button to resolve it (the gated deployment model).
 Generally unless working in a dev or bleed environment, we do not allow ArgoCD to sync automatically.
@@ -149,10 +153,13 @@ Here is a chart showing the current settled-upon practice in select areas:
 
 .. raw:: html
    :file: table1.html
+	  
+Container Environments in the Science Platform
+===============================================
 
+The above discussion pertains to services, ie codebases where an error could affect a service's availability. When it comes to containers made available _by_ a service (eg in nublado), we are less risk averse as users, by design, can always fall back on a previously usable container in case of problems. We recognize that the Science Platform is a primary user environment and as such users do not wish to wait a week for some process to take its course in order to get a requested package or feature. We currently (and anticipate continuing to do so) provide containers labeled "experimental" to rapidly service ad-hoc user requests, for example. 
 
-Discussion for the science RSP production era:
-==============================================
+How to reconcile this user-first orientation to the issue of scientific reproducibility is a matter for a future technote. 
 
 
   
