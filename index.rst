@@ -162,6 +162,23 @@ The above discussion pertains to services, ie codebases where an error could aff
 How to reconcile this user-first orientation to the issue of scientific reproducibility is a matter for a future technote. 
 
 
+A special case of the nublado container is the image promoted by the spawner page as "recommended."
+Since, by recommending a particular container to use, we take on a certain amount of responsibility to make sure that image is compatible with other services and materials (i.e. notebooks) we make available on the various RSP deployments.
+The extra responisbility is met using a more rigorous process for promoting a new recommended tag.
+The process is described in detail `here <https://jira.lsstcorp.org/browse/DM-30240>`_.
+At a high level, the steps are:
+
+#. Select a candidate weekly build
+#. Owners of any notebooks distributed with the RSP should check that they run without error to completion on all deployments where they will be supplied.
+#. The primary stakeholders then all sign off.
+
+   - Frossie as manager of the RSP
+   - Gregory as product owner of the RSP
+   - Leanne for CET
+   - Yusra for Science Pipelines
+
+#. During a maintenance window, e.g. "Patch Thursday", devs will ensure the proposed recommended is pulled to nodes at all deployments and advance the recommended tag to the approved weekly image.
+
   
 .. .. rubric:: References
 
