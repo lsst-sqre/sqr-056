@@ -181,7 +181,7 @@ The steps are:
    - The product owner for the Science Platform (or the Data Engineer in operations)
    - The lead for the Community Engagement Team
    - The lead for Science Pipelines
-   - The lead for Architecture
+   - The lead for Middleware
 
 #. During an advertised maintenance window, e.g. "Patch Thursday", the proposed image will be promoted as recommended.
 
