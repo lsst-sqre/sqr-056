@@ -161,23 +161,29 @@ The above discussion pertains to services, ie codebases where an error could aff
 
 How to reconcile this user-first orientation to the issue of scientific reproducibility is a matter for a future technote. 
 
+The Recommended Container
+-------------------------
 
 A special case of the nublado container is the image promoted by the spawner page as "recommended."
 Since, by recommending a particular container to use, we take on a certain amount of responsibility to make sure that image is compatible with other services and materials (i.e. notebooks) we make available on the various RSP deployments.
 The extra responisbility is met using a more rigorous process for promoting a new recommended tag.
-The process is described in detail `here <https://jira.lsstcorp.org/browse/DM-30240>`_.
-At a high level, the steps are:
+The steps are:
 
-#. Select a candidate weekly build
-#. Owners of any notebooks distributed with the RSP should check that they run without error to completion on all deployments where they will be supplied.
-#. The primary stakeholders then all sign off.
+#. Anyone can propose an image to be promoted to recommended when they feel there is sufficiently high value in new content since the previous recommended version.
+   Typically this will be the Science Platform team, but architecture, for example, may have middleware reasons to propose an image.
+#. Proposals for images to be promoted to recommended will be brought to the weekly RSP operations meeting.
+#. If the proposal is viewed positively at the RSPOps meeting it is then brought to the weekly Data Preview Coordination meeting (or its eventual successor).
+#. The Science Platform team iterates with the maintainers of first party notebook repositories (e.g. tutorial notebooks or notebooks intended to test functionality of the system) to make sure the notebooks run properly on all deployments where they will be provided.
+#. At this point, a Jira ticket is opened by a member of the Science Platform team with appropriate watchers designated.
+#. The ticket must be acknowledge by the following stake holders or their designates:
 
-   - Frossie as manager of the RSP
-   - Gregory as product owner of the RSP
-   - Leanne for CET
-   - Yusra for Science Pipelines
+   - The lead for the Science Platfrom
+   - The product owner for the Science Platform (or the Data Engineer in operations)
+   - The lead for the Community Engagement Team
+   - The lead for Science Pipelines
+   - The lead for Architecture
 
-#. During a maintenance window, e.g. "Patch Thursday", devs will ensure the proposed recommended is pulled to nodes at all deployments and advance the recommended tag to the approved weekly image.
+#. During an advertised maintenance window, e.g. "Patch Thursday", the proposed image will be promoted as recommended.
 
   
 .. .. rubric:: References
