@@ -54,7 +54,7 @@
 
 .. note::
    
-   This is a *descriptive* (not prescriptive) document describing details of current practice of a specific team in a specific area. For the actual developer guide, see developer.lsst.io
+   This is a *descriptive* (*not* prescriptive) document describing details of current practice of a specific team in a specific area. For the actual developer guide, see developer.lsst.io
 
 
 Background
