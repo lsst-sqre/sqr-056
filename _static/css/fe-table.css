@@ -1,14 +1,21 @@
+
 table.fe-table {
     border: 1px solid #FFFFFF;
-    /* width: 350px; */
+    width: 100%;
+    max-width: 100% !important;
     /* height: 200px; */
     text-align: center;
     border-collapse: collapse;
+    table-layout: fixed;
+
 }
 table.fe-table td, table.fe-table th {
     border: 1px solid #cccccc;
-    padding: 3px 5px;
+    padding: 8px 10px;
     text-align: left;
+    word-wrap: break-word;
+    white-space: normal !important;
+    overflow-wrap: break-word;
 }
 table.fe-table tbody td {
     font-size: 13px;
@@ -17,7 +24,7 @@ td:nth-child(1) {
     background: #0B6FA4;
     color: #FFFFFF;
     font-size: 17px;
-    text-align: center;    
+    text-align: center;
 }
 table.fe-table tr:nth-child(even) {
     background: #D0E4F5;
