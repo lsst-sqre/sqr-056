@@ -1,3 +1,11 @@
+#############################################################################
+Guidelines for gated updates for SQuaRE services (including Science Platform)
+#############################################################################
+
+.. abstract::
+
+   The aim of this document is to expose the heuristics by which we consider what the appropriate process is for various types of service updates. We also describe our extant processes around Science Platform and Science Platform adjacent services, as these are likely to be of most interest to developers outside our team. 
+
 ..
   Technote content.
 
@@ -36,11 +44,8 @@
 
    Feel free to delete this instructional comment.
 
-:tocdepth: 1
 
-.. Please do not modify tocdepth; will be fixed when a new Sphinx theme is shipped.
 
-.. sectnum::
 
 .. TODO: Delete the note below before merging new content to the master branch.
 
