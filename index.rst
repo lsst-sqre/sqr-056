@@ -161,11 +161,11 @@ In some environments a co-ordinator is assigned to announce work start and work 
 
 Current fixed maintenance windows (for applicable services/deployments) are:
 
--  Telescope environments: Typically 1st Wednesday of every month during lunchtime at the observatory summit (13:00 Chile local), confirmed with the telescope software configuration manager.
+-  **Summit Window:** Typically 1st Wednesday of every month during lunchtime at the observatory summit (13:00 Chile local), confirmed with the telescope software configuration manager. Environments: Tucson Teststand (dev), (La Serena) Base (int), Summit (prod).
 
--  Any other deployment subject to maintenance window: Weekly, Thursday afternoons (15:00 Pacific), colloquially referred to as Patch Thursday
+-  **Patch Thursday:** Weekly, Thursday afternoons (15:00 Project/Pacific). Environments: Science RSP clusters (data.lsst.cloud and its -dev and -int analogues), Staff RSP clusters (usdf-rsp.slac.stanford.edu etc), developer services cluster (roundtable.lsst.cloud and its dev).
 
-Again, these are not scheduled downtimes. In the event that extended service downtime is needed in a production service (extremely rare), work would be scheduled  with ample notice and co-ordination with stakeholders and/or at a time where disruption is minimized.
+Again, these are not scheduled downtimes. In the event that extended service downtime is needed in a production service (extremely rare), work is scheduled  with ample notice and co-ordination with stakeholders and/or at a time where disruption is minimized.
 
 Here is a chart showing the current settled-upon practice in select areas:
 
